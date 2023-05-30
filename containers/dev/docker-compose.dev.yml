@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  web:
+    image: webdevops/php-apache:8.1-alpine
+    container_name: clients-crud
+    tty: true
+    ports:
+      - "8000:80"
+    working_dir: /app
+    volumes:
+      - ../../backend:/app
+    environment:
+      WEB_DOCUMENT_ROOT: /app
