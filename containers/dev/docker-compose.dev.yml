@@ -3,7 +3,7 @@ version: "3.7"
 services:
   web:
     image: webdevops/php-apache:8.1-alpine
-    container_name: clients-crud
+    container_name: enterprises-crud
     tty: true
     ports:
       - "8000:80"
@@ -13,21 +13,31 @@ services:
     environment:
       WEB_DOCUMENT_ROOT: /app
     command: sh -c "composer install && /usr/bin/supervisord -c /opt/docker/etc/supervisor.conf --logfile /dev/null --pidfile /dev/null --user root"
+    links:
+      - database
 
-    #    links:
-    #      - database
+  database:
+    image: mysql:8.0
+    container_name: MySQL
+    tty: false
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: enterprises-crud
+    volumes:
+      - data_db:/var/lib/mysql
 
-    #  database:
-    #    image: mysql:8.0
-    #    container_name: MySQL
-    #    restart: always
-    #    ports:
-    #      - "3306:3306"
-    #    environment:
-    #      MYSQL_ROOT_PASSWORD: root
-    #      MYSQL_DATABASE: spaceships
-    #    volumes:
-    #      - data-bd:/var/lib/mysql
-    #
-    #volumes:
-    #  data-bd:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.1
+    container_name: phpMyAdmin
+    tty: false
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: database
+    ports:
+      - "8010:80"
+    links:
+      - database
+
+volumes:
+  data_db:

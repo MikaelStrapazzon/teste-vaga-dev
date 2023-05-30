@@ -1,10 +1,11 @@
-# Clients CRUD
+# Enterprises CRUD
 
-## Informações
+## Informações (DEV)
   - API Backend: **Porta 8000**
   - Frontend: **Porta <?>**
-  - Banco de Dados: **Porta <?>**
-  - PhpMyAdmin (Somente Desenvolvimento): **Porta <?>**
+  - Banco de Dados: **Somente comunicação entre containers**
+    - Senha e usuário padrão: **root**
+  - PhpMyAdmin: **Porta 8010**
 
 ## Como executar o projeto
 
