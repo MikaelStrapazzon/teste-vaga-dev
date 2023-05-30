@@ -12,3 +12,22 @@ services:
       - ../../backend:/app
     environment:
       WEB_DOCUMENT_ROOT: /app
+    command: sh -c "composer install && /usr/bin/supervisord -c /opt/docker/etc/supervisor.conf --logfile /dev/null --pidfile /dev/null --user root"
+
+    #    links:
+    #      - database
+
+    #  database:
+    #    image: mysql:8.0
+    #    container_name: MySQL
+    #    restart: always
+    #    ports:
+    #      - "3306:3306"
+    #    environment:
+    #      MYSQL_ROOT_PASSWORD: root
+    #      MYSQL_DATABASE: spaceships
+    #    volumes:
+    #      - data-bd:/var/lib/mysql
+    #
+    #volumes:
+    #  data-bd:
