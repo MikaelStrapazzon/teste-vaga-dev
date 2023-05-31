@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Tempo de geração: 31/05/2023 às 00:58
+-- Tempo de geração: 31/05/2023 às 02:02
 -- Versão do servidor: 8.0.33
 -- Versão do PHP: 8.1.17
 
@@ -30,17 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `cities` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `states_id` bigint UNSIGNED NOT NULL
+  `state_id` bigint UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `cities`
 --
 
-INSERT INTO `cities` (`id`, `name`, `states_id`) VALUES
+INSERT INTO `cities` (`id`, `name`, `state_id`) VALUES
 (1, 'Porto Alegre', 1),
 (2, 'Gravataí', 1),
-(3, 'Pelotas', 1);
+(3, 'Pelotas', 1),
+(4, 'São Paulo', 2),
+(5, 'Belo Horizonte', 3);
 
 -- --------------------------------------------------------
 
@@ -53,7 +55,7 @@ CREATE TABLE `enterprises` (
   `cnpj` char(14) NOT NULL,
   `name` varchar(255) NOT NULL,
   `cep` char(8) NOT NULL,
-  `steet` varchar(255) NOT NULL,
+  `street` varchar(255) NOT NULL,
   `number` int NOT NULL,
   `neighborhood` varchar(255) NOT NULL,
   `city_id` bigint UNSIGNED NOT NULL
@@ -63,7 +65,7 @@ CREATE TABLE `enterprises` (
 -- Despejando dados para a tabela `enterprises`
 --
 
-INSERT INTO `enterprises` (`id`, `cnpj`, `name`, `cep`, `steet`, `number`, `neighborhood`, `city_id`) VALUES
+INSERT INTO `enterprises` (`id`, `cnpj`, `name`, `cep`, `street`, `number`, `neighborhood`, `city_id`) VALUES
 (3, '11111111115555', 'Amazon', '94040500', 'Rua major joão', 1001, 'Parque Flórido', 2),
 (4, '11111111115234', 'Consultoria Y', '80054654', 'Rua lisboa', 508, 'Praia de Belas', 1);
 
@@ -98,7 +100,7 @@ ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `id_states` (`states_id`);
+  ADD KEY `id_states` (`state_id`);
 
 --
 -- Índices de tabela `enterprises`
@@ -125,7 +127,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT de tabela `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `enterprises`
@@ -147,7 +149,7 @@ ALTER TABLE `states`
 -- Restrições para tabelas `cities`
 --
 ALTER TABLE `cities`
-  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`states_id`) REFERENCES `states` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Restrições para tabelas `enterprises`
