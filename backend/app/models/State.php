@@ -11,8 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class State extends Model
 {
-  public int $id;
-  public string $Acronym;
+  public $timestamps = false;
+
+  protected $fillable = [
+      'acronym'
+  ];
 
   public function city(): HasMany
   {

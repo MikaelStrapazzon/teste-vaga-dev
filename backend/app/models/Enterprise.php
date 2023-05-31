@@ -11,13 +11,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Enterprise extends Model
 {
-  public int $id;
-  public string $name;
-  public string $cnpj;
-  public string $cep;
-  public string $street;
-  public int $number;
-  public string $neighborhood;
+  public $timestamps = false;
+
+  protected $fillable = [
+      'name',
+      'cnpj',
+      'cep',
+      'street',
+      'number',
+      'neighborhood',
+      'city_id'
+  ];
 
   public function city(): BelongsTo
   {

@@ -12,8 +12,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class City extends Model
 {
-  public int $id;
-  public string $name;
+  public $timestamps = false;
+
+  protected $fillable = [
+      'name',
+      'state_id'
+  ];
 
   public function enterprise(): HasMany
   {
