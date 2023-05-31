@@ -36,6 +36,8 @@ Você pode testar as instalações com os seguintes comandos
 ## Melhorias futuras
 ### Backend
   - Adicionar Swagger para documentar a API
+  - Criação de DTOs para transporte dos dados entre camadas da aplicação, padronização de requisição a ser recebido e respondido
+  - Validações de campos para cada model
 
 ### Banco de dados
   - Subir estrutura através de Migrations
