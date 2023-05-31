@@ -10,6 +10,6 @@ class Enterprise {
   }
 
   public function create() {
-    echo 'Create enterprise';
+    echo json_encode(EnterpriseCrud::create($_POST));
   }
 }
