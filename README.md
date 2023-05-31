@@ -27,7 +27,15 @@ Você pode testar as instalações com os seguintes comandos
   ```
   docker-compose -f ./containers/dev/docker-compose.dev.yml up
   ```
+  - Esse comando vai subir:
+    - API na porta 8000
+    - PhpMyAdmin na porta 8010
+    - MySQL para uso da API e PhpMyAdmin
+      - Se for a primeira vez subindo o banco de dados, irá também subir a estrutura e dados iniciais que estão presentes no arquivo "init.sql"
 
 ## Melhorias futuras
 ### Backend
-  - Adicionar Swagger
+  - Adicionar Swagger para documentar a API
+
+### Banco de dados
+  - Subir estrutura através de Migrations
