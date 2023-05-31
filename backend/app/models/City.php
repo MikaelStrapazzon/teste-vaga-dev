@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class City extends Model
 {
-  protected int $id;
-  protected string $name;
+  public int $id;
+  public string $name;
 
   public function enterprise(): HasMany
   {

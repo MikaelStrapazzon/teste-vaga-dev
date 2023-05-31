@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controller\Api\Enterprise;
+use App\Channels\Api\Controller\Enterprise;
 use flight\Flight;
 
 $Enterprise = new Enterprise();
