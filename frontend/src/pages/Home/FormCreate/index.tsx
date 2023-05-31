@@ -16,7 +16,7 @@ export default function FormCreate() {
   const [cnpj, setCnpj] = useState('');
   const [name, setName] = useState('');
   const [cep, setCep] = useState('');
-  const [address, setAddress] = useState('');
+  const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [neighborhood, setNeighborhood] = useState('');
   const [city, setCity] = useState('');
@@ -25,7 +25,7 @@ export default function FormCreate() {
     setCnpj('');
     setName('');
     setCep('');
-    setAddress('');
+    setStreet('');
     setNumber('');
     setNeighborhood('');
   };
@@ -48,9 +48,24 @@ export default function FormCreate() {
       .then( response => setCities(response.data) )
   }, [stateSelected]);
 
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault()
+
+    api.postForm("enterprise", {
+      cnpj,
+      name,
+      cep,
+      street,
+      number,
+      neighborhood,
+      'city_id': city
+    })
+      .then(response => window.location.reload())
+  }
+
   return (
     <Container>
-      <form>
+      <form onSubmit={handleSubmit}>
 
         <div>
           <label htmlFor='form_cnpj'>CNPJ</label>
@@ -68,13 +83,13 @@ export default function FormCreate() {
         </div>
 
         <div>
-          <label htmlFor='form_address'>Endereço</label>
-          <input id='form_address' type='text' value={address} onChange={(e) => setAddress(e.target.value)}/>
+          <label htmlFor='form_street'>Endereço</label>
+          <input id='form_street' type='text' value={street} onChange={(e) => setStreet(e.target.value)}/>
         </div>
 
         <div>
           <label htmlFor='form_number'>Número</label>
-          <input id='form_number' type='text' value={number} onChange={(e) => setNumber(e.target.value)}/>
+          <input id='form_number' type='number' value={number} onChange={(e) => setNumber(e.target.value)}/>
         </div>
 
         <div>
