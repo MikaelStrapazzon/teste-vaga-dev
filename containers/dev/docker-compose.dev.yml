@@ -1,7 +1,16 @@
 version: "3.7"
 
 services:
-  web:
+#  web:
+#    image: node:18.16.0-alpine
+#    ports:
+#      - "8020:3000"
+#    working_dir: /app
+#    volumes:
+#      - ../../frontend/enterprises-crud:/app
+#    command: npm start
+
+  api:
     image: webdevops/php-apache:8.1-alpine
     container_name: enterprises-crud
     tty: true
