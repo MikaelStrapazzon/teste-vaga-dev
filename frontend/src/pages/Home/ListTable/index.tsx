@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Container} from "./styles";
+import {Container, Table, TitleTable} from "./styles";
 import {api} from "../../../services/api";
 
 interface enterprise {
@@ -11,15 +11,15 @@ export default function ListTable() {
   const [enterprises, setEnterprises] = useState<enterprise[]>([]);
 
   useEffect(() => {
-    api.get("enterprise")
+    api.get("/enterprise")
       .then( response => setEnterprises(response.data) )
   }, []);
 
   return (
     <Container>
-      <h2>Empresas Cadastradas</h2>
+      <TitleTable>Empresas Cadastradas</TitleTable>
 
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>CNPJ</th>
@@ -34,12 +34,12 @@ export default function ListTable() {
               <td>{enterprise.cnpj}</td>
               <td>{enterprise.name}</td>
               <td>
-                <button>Editar</button>
+                <a href='#'>Editar</a>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </Container>
   );
 }

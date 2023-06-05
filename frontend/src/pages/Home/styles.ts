@@ -9,3 +9,10 @@ export const Container = styled.div`
   
   align-items: center;
 `;
+
+export const DivMain = styled.div`
+  width: 80%;
+  max-width: 1920px;
+  
+  padding: 30px 50px;
+`
