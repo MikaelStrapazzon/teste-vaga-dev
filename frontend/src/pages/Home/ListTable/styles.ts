@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const TitleTable = styled.h2`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   
   margin: 0;
